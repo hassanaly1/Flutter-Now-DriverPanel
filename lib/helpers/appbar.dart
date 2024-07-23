@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:now/helpers/appcolors.dart';
 import 'package:now/helpers/custom_text.dart';
 import 'package:now/helpers/profile_avatar.dart';
 
-class ReUsableAppbar extends StatelessWidget {
+class ReUsableAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Color? iconColor;
   final Color? backgroundColor;
@@ -40,15 +41,17 @@ class ReUsableAppbar extends StatelessWidget {
               maxLines: 2,
               fontWeight: FontWeight.w500,
               fontSize: 20.0,
-              textColor: Colors.white,
+              textColor: AppColors.textBlack,
             ),
           ),
           showProfileAvatar
               ? const ProfileAvatar()
               : const CircleAvatar(
-                  radius: 22, backgroundColor: Colors.transparent)
+                  radius: 22, backgroundColor: Colors.blue)
         ],
       ),
     );
   }
+  @override
+  Size get preferredSize => const Size.fromHeight(kTextTabBarHeight);
 }
