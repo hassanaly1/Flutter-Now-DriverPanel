@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:now/helpers/appcolors.dart';
+import 'package:now/views/history/history.dart';
 import 'package:now/views/home_screen.dart';
 import 'package:now/views/messages/messages.dart';
 import 'package:now/views/profile/profile.dart';
@@ -19,7 +20,7 @@ class _MyBottomBarState extends State<MyBottomBar> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const MessageScreen(),
-    const PlaceholderWidget(color: Colors.blue, text: 'Page 3'),
+    const HistoryScreen(),
     ProfileScreen()
   ];
 
@@ -32,7 +33,7 @@ class _MyBottomBarState extends State<MyBottomBar> {
         items: const [
           Icon(Icons.add, size: 30),
           Icon(Icons.message_sharp, size: 30),
-          Icon(Icons.compare_arrows, size: 30),
+          Icon(Icons.history, size: 30),
           Icon(Icons.perm_identity, size: 30),
         ],
         color: Colors.white,

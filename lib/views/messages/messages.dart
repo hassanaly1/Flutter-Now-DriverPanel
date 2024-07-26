@@ -12,6 +12,7 @@ class MessageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
           backgroundColor: AppColors.textColor,
           forceMaterialTransparency: true,

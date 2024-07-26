@@ -8,18 +8,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final VoidCallback? profilePressed;
   final VoidCallback? menuPressed;
+  final bool showNotificationsIcon;
 
-  const CustomAppBar(
-      {super.key,
-      required this.title,
-      required this.showBackIcon,
-      this.profilePressed,
-      this.menuPressed});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    required this.showBackIcon,
+    this.profilePressed,
+    this.menuPressed,
+    this.showNotificationsIcon = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.transparent,
+      forceMaterialTransparency: true,
       leading: showBackIcon
           ? Padding(
               padding: EdgeInsets.only(left: context.width / 30),
@@ -30,8 +34,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       Get.back();
                     },
                     icon: const Icon(
-                      Icons.keyboard_arrow_left_outlined,
-                      size: 30,
+                      Icons.arrow_back,
                     )),
               ),
             )
@@ -39,16 +42,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: CustomTextWidget(
         text: title,
         fontSize: 18,
+        fontWeight: FontWeight.w600,
       ),
       centerTitle: true,
       actions: [
-        Padding(
-          padding: EdgeInsets.only(right: context.width / 25),
-          child: const Icon(
-            Icons.notifications,
-            size: 30,
+        if (showNotificationsIcon)
+          Padding(
+            padding: EdgeInsets.only(right: context.width / 25),
+            child: const Icon(
+              Icons.notifications,
+              size: 30,
+            ),
           ),
-        ),
         Padding(
           padding: EdgeInsets.only(right: context.width / 25),
           child: InkWell(

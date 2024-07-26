@@ -11,6 +11,7 @@ class MessageDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
           titleSpacing: 0.0,
           backgroundColor: AppColors.whiteColor,

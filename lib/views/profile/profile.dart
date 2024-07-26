@@ -21,6 +21,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: AppColors.backgroundColor,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -44,6 +45,7 @@ class ProfileScreen extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: CustomButton(
                 buttonText: 'Sign Out',
+                usePrimaryColor: true,
                 onTap: () {},
               ),
             )
@@ -94,7 +96,8 @@ class CustomUserCard extends StatelessWidget {
       padding: const EdgeInsets.all(22.0),
       child: InkWell(
         onTap: () {
-          Get.to(() => const EditProfileScreen());
+          Get.to(() => const EditProfileScreen(),
+              transition: Transition.rightToLeft);
         },
         child: Container(
           height: 170,

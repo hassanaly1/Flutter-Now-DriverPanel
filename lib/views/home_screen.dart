@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       appBar: const CustomAppBar(title: 'Home Screen', showBackIcon: false),
       body: SingleChildScrollView(
         child: Padding(
@@ -40,8 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: context.height * 0.02),
             const CustomTextWidget(
               text: 'Today’s Highlights',
-              fontSize: 16.0,
-              fontWeight: FontWeight.w600,
+              fontSize: 14.0,
+              fontWeight: FontWeight.w500,
             ),
             SizedBox(height: context.height * 0.05),
             CarouselSlider.builder(
@@ -82,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: context.height * 0.02),
             const CustomTextWidget(
               text: 'Our Services',
-              fontSize: 20.0,
+              fontSize: 18.0,
               fontWeight: FontWeight.w600,
             ),
             SizedBox(height: context.height * 0.02),
