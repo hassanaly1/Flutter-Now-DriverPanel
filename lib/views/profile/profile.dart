@@ -3,18 +3,20 @@ import 'package:get/get.dart';
 import 'package:now/helpers/appcolors.dart';
 import 'package:now/helpers/custom_button.dart';
 import 'package:now/helpers/custom_text.dart';
+import 'package:now/views/history/history.dart';
 import 'package:now/views/profile/edit_profile.dart';
+import 'package:now/views/profile/help_center.dart';
+import 'package:now/views/profile/settings.dart';
+import 'package:now/views/profile/terms_and_conditions.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
 
   final List<String> items = [
     "Profile",
-    "Payment Methods",
-    "My Orders",
     "Settings",
     'Help Center',
-    'Privacy Policy',
+    'Terms & Conditions',
   ];
 
   @override
@@ -22,34 +24,55 @@ class ProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const CustomUserCard(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: items.length,
-                separatorBuilder: (context, index) => const Divider(),
-                itemBuilder: (context, index) {
-                  return CustomProfileWidget(
-                    title: items[index],
-                  );
-                },
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CustomUserCard(),
+              SizedBox(height: context.height * 0.02),
+              const MyOverAllStatsContainer(),
+              SizedBox(height: context.height * 0.02),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: items.length,
+                  separatorBuilder: (context, index) => const Divider(),
+                  itemBuilder: (context, index) => InkWell(
+                      splashColor: Colors.transparent,
+                      overlayColor: WidgetStateColor.transparent,
+                      onTap: () {
+                        if (index == 0) {
+                          Get.to(() => const EditProfileScreen(),
+                              transition: Transition.rightToLeft);
+                        } else if (index == 1) {
+                          Get.to(() => const SettingsScreen(),
+                              transition: Transition.rightToLeft);
+                        } else if (index == 2) {
+                          Get.to(() => const HelpCenterScreen(),
+                              transition: Transition.rightToLeft);
+                        } else if (index == 3) {
+                          Get.to(() => const TermsAndConditionsScreen(),
+                              transition: Transition.rightToLeft);
+                        }
+                      },
+                      child: CustomProfileWidget(title: items[index])),
+                ),
               ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: CustomButton(
-                buttonText: 'Sign Out',
-                usePrimaryColor: true,
-                onTap: () {},
-              ),
-            )
-          ],
+              SizedBox(height: context.height * 0.02),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: CustomButton(
+                  buttonText: 'Sign Out',
+                  usePrimaryColor: true,
+                  onTap: () {},
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -69,6 +92,7 @@ class CustomProfileWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 6.0),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomTextWidget(
             text: title,
@@ -76,7 +100,6 @@ class CustomProfileWidget extends StatelessWidget {
             fontWeight: FontWeight.w500,
             textColor: const Color(0XFF444444),
           ),
-          const Spacer(),
           Icon(
             Icons.arrow_forward_rounded,
             color: AppColors.lightGreyColor,

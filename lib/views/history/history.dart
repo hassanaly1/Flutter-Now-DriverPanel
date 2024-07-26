@@ -18,7 +18,6 @@ class HistoryScreen extends StatelessWidget {
         appBar: const CustomAppBar(
             title: 'History', showBackIcon: true, showNotificationsIcon: false),
         body: NestedScrollView(
-          // floatHeaderSlivers: true,
           dragStartBehavior: DragStartBehavior.down,
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
