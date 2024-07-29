@@ -18,4 +18,11 @@ class AppColors {
   static Color successColor = Colors.green;
   static Color fieldColor = const Color(0xffF9F9F9);
   static Color borderColor = Colors.black54;
+
+  //ChartColors
+  static const Color chartColorBlue = Color(0xFF2196F3);
+  static const Color charColorOrange = Color(0xFFFF683B);
+  static const Color charColorYellow = Color(0xFFFFC300);
+  static const Color charColorRed = Color(0xFFE80054);
+  static const Color charColorCyan = Color(0xFF50E4FF);
 }
